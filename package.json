@@ -1,0 +1,74 @@
+{
+  "name": "@resolid/utils",
+  "version": "0.0.0",
+  "type": "module",
+  "sideEffects": false,
+  "description": "Common utils",
+  "author": "Huijie Wei",
+  "license": "MIT",
+  "keywords": [
+    "resolid",
+    "typescript",
+    "javascript",
+    "nodejs"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "check-exports": "attw --pack . --profile esm-only",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "build": "tsup",
+    "test": "vitest run"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.2",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.11",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@resolid/config": "^3.1.0",
+    "@types/node": "^20.17.10",
+    "eslint": "^9.17.0",
+    "lefthook": "^1.10.1",
+    "prettier": "^3.4.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "3.0.0-beta.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.7.2"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "pnpm@9.15.2",
+  "homepage": "https://www.resolid.tech",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huijiewei/resolid-utils.git"
+  },
+  "pnpm": {
+    "overrides": {
+      "safer-buffer": "npm:@nolyfill/safer-buffer@^1"
+    }
+  }
+}
