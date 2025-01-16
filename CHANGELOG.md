@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.2.0
+
+### Minor Changes
+
+- [`4e9309c`](https://github.com/huijiewei/resolid-utils/commit/4e9309c4f4448060e7b451bbff20b7eb4991c1f9) Thanks [@huijiewei](https://github.com/huijiewei)! - add throttle utils
+
 ## 0.1.0
 
 ### Minor Changes
