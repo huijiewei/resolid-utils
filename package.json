@@ -39,14 +39,14 @@
     "@changesets/cli": "^2.27.11",
     "@commitlint/cli": "^19.6.1",
     "@commitlint/config-conventional": "^19.6.0",
-    "@resolid/config": "^3.1.2",
+    "@resolid/config": "^3.1.3",
     "@types/node": "^20.17.14",
     "eslint": "^9.18.0",
-    "lefthook": "^1.10.7",
+    "lefthook": "^1.10.8",
     "prettier": "^3.4.2",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
-    "vitest": "beta"
+    "vitest": "^3.0.2"
   },
   "peerDependencies": {
     "typescript": "^5.7.3"
