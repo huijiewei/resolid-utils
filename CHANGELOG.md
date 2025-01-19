@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.2.1
+
+### Patch Changes
+
+- [`c91da03`](https://github.com/huijiewei/resolid-utils/commit/c91da03f5197058f237a881ca612f95d479a2a7b) Thanks [@huijiewei](https://github.com/huijiewei)! - update dependencies
+
 ## 0.2.0
 
 ### Minor Changes
