@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.3.0
+
+### Minor Changes
+
+- [`3ad4cec`](https://github.com/huijiewei/resolid-utils/commit/3ad4cecf648a5f78abee345f3a45af376e18d8b9) Thanks [@huijiewei](https://github.com/huijiewei)! - improve type safety and add type checking script
+
 ## 0.2.3
 
 ### Patch Changes
