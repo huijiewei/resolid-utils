@@ -8,3 +8,14 @@
 export const clamp = (value: number, [min, max]: [number, number]): number => {
   return Math.min(max, Math.max(min, value));
 };
+
+/**
+ * 生成一个指定范围的数字数组。
+ */
+export const range = (start: number, end: number) => {
+  if (start > end) {
+    return [];
+  }
+
+  return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+};
