@@ -1,49 +1,60 @@
-export const startWith = (str: string, prefix: string, ignoreCase = true): boolean => {
-  if (str.length < prefix.length) {
+/**
+ * 将字符串的首字母大写，其余部分保持不变。
+ */
+export const capitalize = (str: string): string => {
+  if (!str) {
+    return "";
+  }
+
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+/**
+ * 检查字符串是否以指定前缀开头，可选择忽略大小写。
+ */
+export const startsWith = (
+  text: string,
+  prefix: string,
+  ignoreCase = true,
+): boolean => {
+  if (text.length < prefix.length) {
     return false;
   }
 
-  const localStr = ignoreCase ? str.toLowerCase() : str;
-  const localPrefix = ignoreCase ? prefix.toLowerCase() : prefix;
-
-  for (let i = 0; i < localPrefix.length; i++) {
-    if (localStr[i] !== localPrefix[i]) {
-      return false;
-    }
+  if (ignoreCase) {
+    return text.toLowerCase().startsWith(prefix.toLowerCase());
   }
 
-  return true;
+  return text.startsWith(prefix);
 };
 
-export const endWith = (str: string, suffix: string, ignoreCase = true) => {
-  const diff = str.length - suffix.length;
-
-  if (diff < 0) {
+/**
+ * 检查字符串是否以指定后缀结尾，可选择忽略大小写。
+ */
+export const endsWith = (text: string, suffix: string, ignoreCase = true) => {
+  if (text.length < suffix.length) {
     return false;
   }
 
-  const localStr = ignoreCase ? str.toLowerCase() : str;
-  const localSuffix = ignoreCase ? suffix.toLowerCase() : suffix;
-
-  if (diff > 0) {
-    return localStr.indexOf(localSuffix, diff) === diff;
+  if (ignoreCase) {
+    return text.toLowerCase().endsWith(suffix.toLowerCase());
   }
 
-  return localStr === localSuffix;
+  return text.endsWith(suffix);
 };
 
-export const trimStart = (str: string, prefix: string, ignoreCase = true) => {
-  if (startWith(str, prefix, ignoreCase)) {
-    return str.slice(prefix.length, str.length);
+export const trimStart = (text: string, prefix: string, ignoreCase = true) => {
+  if (startsWith(text, prefix, ignoreCase)) {
+    return text.slice(prefix.length, text.length);
   }
 
-  return str;
+  return text;
 };
 
-export const trimEnd = (str: string, suffix: string, ignoreCase = true) => {
-  if (endWith(str, suffix, ignoreCase)) {
-    return str.slice(0, str.length - suffix.length);
+export const trimEnd = (text: string, suffix: string, ignoreCase = true) => {
+  if (endsWith(text, suffix, ignoreCase)) {
+    return text.slice(0, text.length - suffix.length);
   }
 
-  return str;
+  return text;
 };

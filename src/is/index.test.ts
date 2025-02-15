@@ -1,5 +1,14 @@
 import { describe, expect, test } from "vitest";
-import { isBoolean, isEmpty, isFunction, isNullish, isNumber, isObject, isString, isUndefined } from "./index";
+import {
+  isBoolean,
+  isEmpty,
+  isFunction,
+  isNullish,
+  isNumber,
+  isObject,
+  isString,
+  isUndefined,
+} from "./index";
 
 describe("isBoolean", () => {
   test("test", () => {

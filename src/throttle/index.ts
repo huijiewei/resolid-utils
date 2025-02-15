@@ -13,11 +13,19 @@ export type ThrottleOptions = {
   once?: boolean;
 };
 
-type Throttler<T extends unknown[]> = {
+export type Throttler<T extends unknown[]> = {
   (...args: T): void;
   cancel: () => void;
 };
 
+/**
+ * 节流函数，用于限制函数的执行频率。
+ *
+ * @param callback - 需要节流的回调函数
+ * @param wait - 等待时间（毫秒）
+ * @param options - 配置选项
+ * @returns - 返回一个带有 `cancel` 方法的节流函数
+ */
 export const throttle = <T extends unknown[]>(
   callback: (...args: T) => unknown,
   wait = 0,
@@ -69,6 +77,14 @@ export const throttle = <T extends unknown[]>(
   return fn;
 };
 
+/**
+ * 防抖函数，执行延迟后的回调，避免频繁触发。
+ *
+ * @param callback - 需要防抖的回调函数
+ * @param wait - 等待时间（毫秒）
+ * @param options - 配置选项
+ * @returns - 返回一个带有 `cancel` 方法的防抖函数
+ */
 export const debounce = <T extends unknown[]>(
   callback: (...args: T) => unknown,
   wait = 0,

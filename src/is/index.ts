@@ -1,32 +1,99 @@
-import type { AnyFunction } from "../types";
+// eslint-disable-next-line n/prefer-global/process
+export const __DEV__ = process.env.NODE_ENV !== "production";
 
-export const isBoolean = (test: unknown): test is boolean => typeof test === "boolean";
+export const isBrowser = typeof window !== "undefined";
 
-export const isNumber = (test: unknown): test is number => typeof test === "number";
+/**
+ * 检查给定的值是否为布尔值。
+ */
+export const isBoolean = (value: unknown): value is boolean => {
+  return typeof value === "boolean";
+};
 
-export const isString = (test: unknown): test is string => typeof test === "string";
+/**
+ * 检查给定的值是否为数字。
+ */
+export const isNumber = (value: unknown): value is number => {
+  return typeof value === "number";
+};
 
-export const isObject = (test: unknown): test is Record<string, unknown> => test !== null && typeof test === "object";
+/**
+ * 检查给定的值是否为字符串。
+ */
+export const isString = (value: unknown): value is string => {
+  return typeof value === "string";
+};
 
-export const isFunction = <T = AnyFunction>(test: unknown): test is T => typeof test === "function";
+/**
+ * 检查给定的值是否为对象。
+ */
+export const isObject = (value: unknown): value is Record<string, unknown> => {
+  return value !== null && typeof value === "object";
+};
 
-export const isUndefined = (test: unknown): test is undefined => typeof test === "undefined";
+/**
+ * 检查给定的值是否为 `undefined`。
+ */
+export const isUndefined = (value: unknown): value is undefined => {
+  return typeof value === "undefined";
+};
 
-export const isNullish = (test: unknown): test is void => test == null;
+/**
+ * 检查给定的值是否为 `null` 或 `undefined`。
+ */
+export const isNullish = (value: unknown): value is null | undefined => {
+  return value === null || value === undefined;
+};
 
-export const isArray = (test: unknown): test is unknown[] => !!test && Array.isArray(test);
+/**
+ * 检查给定的值是否为函数。
+ */
+export const isFunction = <T extends (...args: never[]) => unknown>(
+  value: unknown,
+): value is T => {
+  return typeof value === "function";
+};
 
-export const isEmpty = (test: unknown): boolean => {
-  switch (true) {
-    case isNullish(test):
-      return true;
-    case isString(test):
-      return test.trim() === "";
-    case isArray(test):
-      return test.length === 0;
-    case isObject(test):
-      return Object.keys(test).length === 0;
+/**
+ * 检查给定的值是否为日期类型
+ */
+export const isDate = (value: unknown): value is Date => {
+  return (
+    value instanceof Date ||
+    Object.prototype.toString.call(value) === "[object Date]"
+  );
+};
+
+/**
+ * 检查给定的值是否为空值。
+ */
+export const isEmpty = (value: unknown): boolean => {
+  if (isNullish(value)) {
+    return true;
+  }
+
+  if (isNumber(value)) {
+    return value === 0;
+  }
+
+  if (isString(value)) {
+    return value.trim() == "";
+  }
+
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  }
+
+  if (isObject(value)) {
+    return Object.keys(value).length === 0;
   }
 
   return false;
+};
+
+/**
+ * 检查给定的值是否为 `Promise`。
+ */
+export const isPromise = (value: unknown): value is Promise<unknown> => {
+  return value instanceof Promise;
 };
