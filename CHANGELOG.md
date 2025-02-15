@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.2.3
+
+### Patch Changes
+
+- [`5e3d8c9`](https://github.com/huijiewei/resolid-utils/commit/5e3d8c99481c9025a8269d6253b9e843e219e88c) Thanks [@huijiewei](https://github.com/huijiewei)! - simplify function definitions and improve type annotations
+
 ## 0.2.2
 
 ### Patch Changes
