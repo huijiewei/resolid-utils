@@ -48,7 +48,7 @@ export const isNullish = (value: unknown): value is null | undefined => {
 /**
  * 检查给定的值是否为函数。
  */
-export const isFunction = <T extends (...args: never[]) => unknown>(
+export const isFunction = <T extends (...args: unknown[]) => unknown>(
   value: unknown,
 ): value is T => {
   return typeof value === "function";

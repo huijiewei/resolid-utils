@@ -4,8 +4,7 @@ import type { ValueOrFunction } from "../types";
 /**
  * 空函数，什么也不做。
  */
-export const noop = (): void => {
-};
+export const noop = (): void => {};
 
 /**
  * 使程序在指定的毫秒数内暂停。
@@ -25,7 +24,7 @@ export const always = <T>(value: T): (() => T) => {
  * 统一处理成功和失败的返回结果。
  */
 export const to = <T, E = Error>(
-  promise: Promise<T>
+  promise: Promise<T>,
 ): Promise<[E, undefined] | [null, T]> => {
   return promise
     .then<[null, T]>((data) => [null, data])
@@ -40,8 +39,8 @@ export function runIf<T, A extends unknown[]>(
   ...args: A
 ): T {
   if (isFunction(value)) {
-    return value(...args);
+    return value(...args) as T;
   }
 
-  return value;
+  return value as T;
 }
