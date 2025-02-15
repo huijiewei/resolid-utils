@@ -48,9 +48,8 @@ export const isNullish = (value: unknown): value is null | undefined => {
 /**
  * 检查给定的值是否为函数。
  */
-export const isFunction = <T extends (...args: unknown[]) => unknown>(
-  value: unknown,
-): value is T => {
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+export const isFunction = (value: unknown): value is Function => {
   return typeof value === "function";
 };
 

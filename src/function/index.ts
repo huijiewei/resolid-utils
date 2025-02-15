@@ -39,8 +39,8 @@ export function runIf<T, A extends unknown[]>(
   ...args: A
 ): T {
   if (isFunction(value)) {
-    return value(...args) as T;
+    return value(...args);
   }
 
-  return value as T;
+  return value;
 }
