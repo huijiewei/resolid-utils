@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.3.1
+
+### Patch Changes
+
+- [`94595ef`](https://github.com/huijiewei/resolid-utils/commit/94595ef639101f3b8b9f7ff9c3c1f39c7f6e4f8e) Thanks [@huijiewei](https://github.com/huijiewei)! - add number range function
+
 ## 0.3.0
 
 ### Minor Changes
