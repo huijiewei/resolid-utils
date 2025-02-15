@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.2.2
+
+### Patch Changes
+
+- [`a88a82f`](https://github.com/huijiewei/resolid-utils/commit/a88a82f224e7eda9aa24764f9f1f8108d00f3f31) Thanks [@huijiewei](https://github.com/huijiewei)! - add new utilities and improve code style settings
+
 ## 0.2.1
 
 ### Patch Changes
