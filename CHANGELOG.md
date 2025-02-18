@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.3.2
+
+### Patch Changes
+
+- [`ab9da52`](https://github.com/huijiewei/resolid-utils/commit/ab9da529815f0e092e57bb81825f875aa57de67a) Thanks [@huijiewei](https://github.com/huijiewei)! - update package dependencies and add default export
+
 ## 0.3.1
 
 ### Patch Changes
