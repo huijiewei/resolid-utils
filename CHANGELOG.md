@@ -1,5 +1,13 @@
 # @resolid/utils
 
+## 0.3.3
+
+### Patch Changes
+
+- [`d9b68f8`](https://github.com/huijiewei/resolid-utils/commit/d9b68f814bd35325dc45402ad72cdc281b73d0cf) Thanks [@huijiewei](https://github.com/huijiewei)! - update dependencies
+
+- [`7d0fd06`](https://github.com/huijiewei/resolid-utils/commit/7d0fd06338b48ce278e985878b507963c31e2e26) Thanks [@huijiewei](https://github.com/huijiewei)! - add asArray function
+
 ## 0.3.2
 
 ### Patch Changes
