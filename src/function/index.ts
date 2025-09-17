@@ -44,3 +44,12 @@ export function runIf<T, A extends unknown[]>(
 
   return value;
 }
+
+export const callAll =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  <T extends (...a: any[]) => void>(...fns: (T | null | undefined)[]) =>
+    (...a: Parameters<T>) => {
+      fns.forEach(function (fn) {
+        fn?.(...a);
+      });
+    };
