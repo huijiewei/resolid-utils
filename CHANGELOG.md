@@ -1,5 +1,13 @@
 # @resolid/utils
 
+## 0.3.4
+
+### Patch Changes
+
+- [`a0319c4`](https://github.com/huijiewei/resolid-utils/commit/a0319c41e48bc291575d23bbce74c91b41585649) Thanks [@huijiewei](https://github.com/huijiewei)! - update dependencies
+
+- [`1c13a1b`](https://github.com/huijiewei/resolid-utils/commit/1c13a1bd3298eb580ecc5ed6da5b05c2f4282378) Thanks [@huijiewei](https://github.com/huijiewei)! - add callAll function
+
 ## 0.3.3
 
 ### Patch Changes
