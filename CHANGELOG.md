@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 0.3.5
+
+### Patch Changes
+
+- [`ecf4003`](https://github.com/huijiewei/resolid-utils/commit/ecf4003982150d262c3821cb1b53e041be961043) Thanks [@huijiewei](https://github.com/huijiewei)! - replace tsup with tsdown
+
 ## 0.3.4
 
 ### Patch Changes
