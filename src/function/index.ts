@@ -9,7 +9,7 @@ export const noop = (): void => {};
 /**
  * 使程序在指定的毫秒数内暂停。
  */
-export const sleep = (ms: number) => {
+export const sleep = (ms: number): Promise<void> => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
 
@@ -48,7 +48,7 @@ export function runIf<T, A extends unknown[]>(
 export const callAll =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   <T extends (...a: any[]) => void>(...fns: (T | null | undefined)[]) =>
-    (...a: Parameters<T>) => {
+    (...a: Parameters<T>): void => {
       fns.forEach(function (fn) {
         fn?.(...a);
       });

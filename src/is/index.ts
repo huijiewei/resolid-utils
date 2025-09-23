@@ -1,7 +1,7 @@
 // eslint-disable-next-line n/prefer-global/process
-export const __DEV__ = process.env.NODE_ENV !== "production";
+export const __DEV__: boolean = process.env.NODE_ENV !== "production";
 
-export const isBrowser = typeof window !== "undefined";
+export const isBrowser: boolean = typeof window !== "undefined";
 
 /**
  * 检查给定的值是否为布尔值。

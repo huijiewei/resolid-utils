@@ -31,7 +31,11 @@ export const startsWith = (
 /**
  * 检查字符串是否以指定后缀结尾，可选择忽略大小写。
  */
-export const endsWith = (text: string, suffix: string, ignoreCase = true) => {
+export const endsWith = (
+  text: string,
+  suffix: string,
+  ignoreCase = true,
+): boolean => {
   if (text.length < suffix.length) {
     return false;
   }
@@ -43,7 +47,11 @@ export const endsWith = (text: string, suffix: string, ignoreCase = true) => {
   return text.endsWith(suffix);
 };
 
-export const trimStart = (text: string, prefix: string, ignoreCase = true) => {
+export const trimStart = (
+  text: string,
+  prefix: string,
+  ignoreCase = true,
+): string => {
   if (startsWith(text, prefix, ignoreCase)) {
     return text.slice(prefix.length, text.length);
   }
@@ -51,7 +59,11 @@ export const trimStart = (text: string, prefix: string, ignoreCase = true) => {
   return text;
 };
 
-export const trimEnd = (text: string, suffix: string, ignoreCase = true) => {
+export const trimEnd = (
+  text: string,
+  suffix: string,
+  ignoreCase = true,
+): string => {
   if (endsWith(text, suffix, ignoreCase)) {
     return text.slice(0, text.length - suffix.length);
   }

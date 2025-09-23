@@ -12,7 +12,7 @@ export const clamp = (value: number, [min, max]: [number, number]): number => {
 /**
  * 生成一个指定范围的数字数组。
  */
-export const range = (start: number, end: number) => {
+export const range = (start: number, end: number): number[] => {
   if (start > end) {
     return [];
   }
