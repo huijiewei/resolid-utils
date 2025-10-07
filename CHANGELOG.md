@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.0.0
+
+### Major Changes
+
+- [`c023b20`](https://github.com/huijiewei/resolid-utils/commit/c023b20d18f5312f07aa7a2416bd0bbb25f0f1e4) Thanks [@huijiewei](https://github.com/huijiewei)! - update node support version
+
 ## 0.3.5
 
 ### Patch Changes
