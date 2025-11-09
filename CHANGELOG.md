@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.1.0
+
+### Minor Changes
+
+- feat: add isTruthy and isDefined functions ([`983c1ff`](https://github.com/huijiewei/resolid-utils/commit/983c1ff572be64a8cb047ea001c41bc27b39bcdc))
+
 ## 1.0.0
 
 ### Major Changes
