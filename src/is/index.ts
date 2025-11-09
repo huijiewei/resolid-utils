@@ -3,70 +3,139 @@ export const __DEV__: boolean = process.env.NODE_ENV !== "production";
 
 export const isBrowser: boolean = typeof window !== "undefined";
 
+type Truthy<T> = T extends false | "" | 0 | null | undefined ? never : T;
+
 /**
- * 检查给定的值是否为布尔值。
+ * 判断一个值是否为“真值”（truthy）。
+ *
+ * 在 JavaScript 中，以下值会被认为是“假值”（falsy）：
+ * - false
+ * - 0
+ * - -0
+ * - 0n
+ * - ""
+ * - null
+ * - undefined
+ * - NaN
+ *
+ * 除此之外的值都被认为是“真值”（truthy）。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值为真值则返回 true，否则返回 false
  */
-export const isBoolean = (value: unknown): value is boolean => {
+export function isTruthy<T>(value: T): value is Truthy<T> {
+  return !!value;
+}
+
+/**
+ * 判断一个值是否为 `undefined`。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值为 `undefined`，返回 true，否则返回 false
+ */
+export function isUndefined(value: unknown): value is undefined {
+  return value === undefined;
+}
+
+/**
+ * 判断一个值是否已定义（即不为 `null` 或 `undefined`）。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值既不是 `null` 也不是 `undefined`，则返回 true
+ */
+export function isDefined<T>(value: T): value is NonNullable<T> {
+  return value !== undefined && value !== null;
+}
+
+/**
+ * 判断一个值是否为布尔类型（boolean）。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是布尔类型，返回 true，否则返回 false
+ */
+export function isBoolean(value: unknown): value is boolean {
   return typeof value === "boolean";
-};
+}
 
 /**
- * 检查给定的值是否为数字。
+ * 判断一个值是否为数字类型（number）。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是数字则返回 true，否则返回 false
  */
-export const isNumber = (value: unknown): value is number => {
+export function isNumber(value: unknown): value is number {
   return typeof value === "number";
-};
+}
 
 /**
- * 检查给定的值是否为字符串。
+ * 判断一个值是否为字符串类型。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是字符串则返回 true，否则返回 false
  */
-export const isString = (value: unknown): value is string => {
+export function isString(value: unknown): value is string {
   return typeof value === "string";
-};
+}
 
 /**
- * 检查给定的值是否为对象。
+ * 判断一个值是否为对象类型（排除 null）。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是对象（且不为 null）则返回 true，否则返回 false
  */
-export const isObject = (value: unknown): value is Record<string, unknown> => {
+export function isObject(value: unknown): value is Record<string, unknown> {
   return value !== null && typeof value === "object";
-};
+}
 
 /**
- * 检查给定的值是否为 `undefined`。
+ * 判断一个值是否为 null 或 undefined（即“nullish”）。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是 null 或 undefined，则返回 true，否则返回 false
  */
-export const isUndefined = (value: unknown): value is undefined => {
-  return typeof value === "undefined";
-};
-
-/**
- * 检查给定的值是否为 `null` 或 `undefined`。
- */
-export const isNullish = (value: unknown): value is null | undefined => {
+export function isNullish(value: unknown): value is null | undefined {
   return value === null || value === undefined;
-};
+}
 
 /**
- * 检查给定的值是否为函数。
+ * 判断一个值是否为函数类型。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是函数则返回 true，否则返回 false
  */
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
-export const isFunction = (value: unknown): value is Function => {
+export function isFunction(value: unknown): value is Function {
   return typeof value === "function";
-};
+}
 
 /**
- * 检查给定的值是否为日期类型
+ * 判断一个值是否为 Date 对象。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是 Date 对象则返回 true，否则返回 false
  */
-export const isDate = (value: unknown): value is Date => {
+export function isDate(value: unknown): value is Date {
   return (
     value instanceof Date ||
     Object.prototype.toString.call(value) === "[object Date]"
   );
-};
+}
 
 /**
- * 检查给定的值是否为空值。
+ * 判断一个值是否“为空”。
+ *
+ * 规则：
+ * - null 或 undefined → 为空
+ * - 数字 0 → 为空
+ * - 字符串只包含空白字符 → 为空
+ * - 空数组 → 为空
+ * - 空对象 → 为空
+ * - 其他类型 → 不为空
+ *
+ * @param value - 要判断的值
+ * @returns 如果值为空则返回 true，否则返回 false
  */
-export const isEmpty = (value: unknown): boolean => {
+export function isEmpty(value: unknown): boolean {
   if (isNullish(value)) {
     return true;
   }
@@ -83,16 +152,21 @@ export const isEmpty = (value: unknown): boolean => {
     return value.length === 0;
   }
 
+  /* istanbul ignore next -- @preserve */
   if (isObject(value)) {
     return Object.keys(value).length === 0;
   }
 
+  /* istanbul ignore next -- @preserve */
   return false;
-};
+}
 
 /**
- * 检查给定的值是否为 `Promise`。
+ * 判断一个值是否为 Promise 对象。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是 Promise 对象则返回 true，否则返回 false
  */
-export const isPromise = (value: unknown): value is Promise<unknown> => {
+export function isPromise(value: unknown): value is Promise<unknown> {
   return value instanceof Promise;
-};
+}

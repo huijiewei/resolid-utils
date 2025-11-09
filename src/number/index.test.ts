@@ -1,34 +1,42 @@
-import { describe, expect, test } from "vitest";
-import { clamp } from "./index";
+import { describe, expect, it } from "vitest";
+import { clamp, range } from "./index";
 
 describe("clamp", () => {
-  test("should clamp the value within the specified range", () => {
-    const value = 5;
-    const min = 0;
-    const max = 10;
-
-    const clampedValue = clamp(value, [min, max]);
-
-    expect(clampedValue).toBe(value);
+  it("should return the value itself if it is within the range", () => {
+    expect(clamp(5, [0, 10])).toBe(5);
+    expect(clamp(0, [0, 10])).toBe(0);
+    expect(clamp(10, [0, 10])).toBe(10);
   });
 
-  test("should clamp the value to the minimum value if it is below the range", () => {
-    const value = -5;
-    const min = 0;
-    const max = 10;
-
-    const clampedValue = clamp(value, [min, max]);
-
-    expect(clampedValue).toBe(min);
+  it("should return min if value is less than min", () => {
+    expect(clamp(-5, [0, 10])).toBe(0);
+    expect(clamp(-1, [0, 10])).toBe(0);
   });
 
-  test("should clamp the value to the maximum value if it is above the range", () => {
-    const value = 15;
-    const min = 0;
-    const max = 10;
+  it("should return max if value is greater than max", () => {
+    expect(clamp(15, [0, 10])).toBe(10);
+    expect(clamp(100, [0, 10])).toBe(10);
+  });
 
-    const clampedValue = clamp(value, [min, max]);
+  it("should handle min equal to max", () => {
+    expect(clamp(5, [5, 5])).toBe(5);
+    expect(clamp(0, [5, 5])).toBe(5);
+    expect(clamp(10, [5, 5])).toBe(5);
+  });
+});
 
-    expect(clampedValue).toBe(max);
+describe("range", () => {
+  it("should generate a range from start to end inclusive", () => {
+    expect(range(1, 5)).toEqual([1, 2, 3, 4, 5]);
+    expect(range(0, 0)).toEqual([0]);
+  });
+
+  it("should return an empty array if start > end", () => {
+    expect(range(5, 1)).toEqual([]);
+    expect(range(10, 0)).toEqual([]);
+  });
+
+  it("should work with negative numbers", () => {
+    expect(range(-2, 2)).toEqual([-2, -1, 0, 1, 2]);
   });
 });

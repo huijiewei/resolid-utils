@@ -1,15 +1,6 @@
 export type ThrottleOptions = {
-  /**
-   * 在第一次调用时立即执行
-   */
   start?: boolean;
-  /**
-   * 当等待时间（wait）结束后立即执行
-   */
   middle?: boolean;
-  /**
-   * 在第一次成功调用后取消
-   */
   once?: boolean;
 };
 
@@ -19,18 +10,22 @@ export type Throttler<T extends unknown[]> = {
 };
 
 /**
- * 节流函数，用于限制函数的执行频率。
+ * 创建一个节流函数，限制回调在指定时间间隔内执行次数。
  *
- * @param callback - 需要节流的回调函数
- * @param wait - 等待时间（毫秒）
+ * @template T - 回调函数参数类型
+ * @param callback - 要节流执行的函数
+ * @param wait - 节流时间间隔（毫秒），默认 0
  * @param options - 配置选项
- * @returns - 返回一个带有 `cancel` 方法的节流函数
+ *                  - start: 是否立即执行第一次，默认 true
+ *                  - middle: 是否在间隔时间内允许再次执行，默认 true
+ *                  - once: 是否执行一次后自动取消，默认 false
+ * @returns 一个节流后的函数，并附带 cancel 方法可取消
  */
-export const throttle = <T extends unknown[]>(
+export function throttle<T extends unknown[]>(
   callback: (...args: T) => unknown,
   wait = 0,
   { start = true, middle = true, once = false }: ThrottleOptions = {},
-): Throttler<T> => {
+): Throttler<T> {
   let innerStart = start;
   let last = 0;
   let timer: ReturnType<typeof setTimeout>;
@@ -75,18 +70,24 @@ export const throttle = <T extends unknown[]>(
   };
 
   return fn;
-};
+}
 
 /**
- * 防抖函数，执行延迟后的回调，避免频繁触发。
+ * 创建一个防抖函数，在连续调用时只在停止调用后执行回调。
  *
- * @param callback - 需要防抖的回调函数
- * @param wait - 等待时间（毫秒）
- * @param options - 配置选项
- * @returns - 返回一个带有 `cancel` 方法的防抖函数
+ * @template T - 回调函数参数类型
+ * @param callback - 要防抖执行的函数
+ * @param wait - 防抖时间间隔（毫秒），默认 0
+ * @param options - 配置选项（同 throttle）
+ *                  - start: 是否立即执行第一次，默认 false
+ *                  - middle: 是否允许间隔内触发，默认 false
+ *                  - once: 是否执行一次后自动取消，默认 false
+ * @returns 一个防抖后的函数，并附带 cancel 方法可取消
  */
-export const debounce = <T extends unknown[]>(
+export function debounce<T extends unknown[]>(
   callback: (...args: T) => unknown,
   wait = 0,
   { start = false, middle = false, once = false }: ThrottleOptions = {},
-): Throttler<T> => throttle(callback, wait, { start, middle, once });
+): Throttler<T> {
+  return throttle(callback, wait, { start, middle, once });
+}
