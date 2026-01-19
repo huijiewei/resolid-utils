@@ -97,3 +97,41 @@ export function pickBy<T extends object>(
 
   return result;
 }
+
+/**
+ * 根据给定的路径字符串，安全地获取对象中的深层属性值。
+ *
+ * @template T 默认值类型
+ * @param value 要读取的目标对象
+ * @param path 属性访问路径
+ * @param defaultValue 当路径不存在或解析失败时返回的默认值
+ * @returns 解析得到的属性值或默认值
+ */
+export function get<T = unknown>(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  value: any,
+  path: string,
+  defaultValue?: T,
+): T {
+  const segments = path.split(/[.[\]]+/g).filter(Boolean);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let current: any = value;
+
+  for (const rawKey of segments) {
+    if (current == null) {
+      return defaultValue as T;
+    }
+
+    const key =
+      rawKey[0] === "'" || rawKey[0] === '"' ? rawKey.slice(1, -1) : rawKey;
+
+    current = current[key];
+  }
+
+  if (current === undefined) {
+    return defaultValue as T;
+  }
+
+  return current;
+}

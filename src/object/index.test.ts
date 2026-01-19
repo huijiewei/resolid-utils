@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { omit, omitBy, pick, pickBy } from "./index"; // 根据实际路径修改
+import { get, omit, omitBy, pick, pickBy } from "./index";
 
 describe("Object Utilities", () => {
   const obj = { a: 1, b: 2, c: 3 };
@@ -59,6 +59,50 @@ describe("Object Utilities", () => {
 
     it("should keep all keys if predicate always returns true", () => {
       expect(pickBy(obj, () => true)).toEqual(obj);
+    });
+  });
+
+  describe("get", () => {
+    type Person = {
+      name: string;
+      age: number;
+      friends?: Person[];
+    };
+    const jay: Person = {
+      name: "jay",
+      age: 17,
+      friends: [
+        {
+          name: "carl",
+          age: 17,
+          friends: [
+            {
+              name: "sara",
+              age: 17,
+            },
+          ],
+        },
+      ],
+    };
+    it("handles null and undefined input", () => {
+      expect(get(null, "name")).toBeUndefined();
+      expect(get(undefined, "name")).toBeUndefined();
+    });
+    it("respects undefined as default value", () => {
+      expect(get({}, "a.b.c", undefined)).toBeUndefined();
+    });
+    it("returns specified value or default using path", () => {
+      expect(get({ age: undefined }, "age", 22)).toBe(22);
+      expect(get(jay, "friends[0].age")).toBe(17);
+      expect(get(jay, 'friends["0"].age')).toBe(17);
+      expect(get(jay, "friends.0.age")).toBe(17);
+      expect(get(jay, "friends.1.age")).toBeUndefined();
+      expect(get(jay, "friends.0.friends[0].name")).toBe("sara");
+      expect(get(jay, "name")).toBe("jay");
+      expect(get(jay, "[name]")).toBe("jay");
+      expect(get(jay, '["name"]')).toBe("jay");
+      expect(get(jay, "friends[0][name]")).toBe("carl");
+      expect(get(jay, "friends[0].friends[0].friends[0].age", 22)).toBe(22);
     });
   });
 });
