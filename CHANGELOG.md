@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.2.0
+
+### Minor Changes
+
+- add object get function ([`9ff5ade`](https://github.com/huijiewei/resolid-utils/commit/9ff5ade1ff18ff9eb94352feda1a8732cfaf1e67))
+
 ## 1.1.0
 
 ### Minor Changes
