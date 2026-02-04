@@ -1,4 +1,5 @@
 export * from "./array";
+export * from "./file";
 export * from "./function";
 export * from "./is";
 export * from "./number";
