@@ -1,5 +1,15 @@
 # @resolid/utils
 
+## 1.2.1
+
+### Patch Changes
+
+- feat: add file type validation utilities ([`d7b76ae`](https://github.com/huijiewei/resolid-utils/commit/d7b76ae70947aeae4359d7c4ae2b1f0879607f3f))
+
+- feat: implement string case conversion functions ([`ae199d1`](https://github.com/huijiewei/resolid-utils/commit/ae199d1ac26ad55ec1308028e019785b23f75477))
+
+- chore: update dependencies ([`7d07569`](https://github.com/huijiewei/resolid-utils/commit/7d0756948221c8ecec8c79c34122e3ddbdd3fefc))
+
 ## 1.2.0
 
 ### Minor Changes
