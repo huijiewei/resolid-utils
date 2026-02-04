@@ -32,9 +32,7 @@ jobs:
           cache: "pnpm"
 
       - name: Install
-        run: |
-          npm install -g npm@latest
-          pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build Package
         run: pnpm run build
