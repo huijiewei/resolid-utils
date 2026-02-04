@@ -38,10 +38,10 @@ export function isUndefined(value: unknown): value is undefined {
 }
 
 /**
- * 判断一个值是否已定义（即不为 `null` 或 `undefined`）。
+ * 判断一个值是否已定义（即不为 `undefined` 或 `null`）。
  *
  * @param value - 要判断的值
- * @returns 如果值既不是 `null` 也不是 `undefined`，则返回 true
+ * @returns 如果值既不是 `undefined` 也不是 `null`，则返回 true
  */
 export function isDefined<T>(value: T): value is NonNullable<T> {
   return value !== undefined && value !== null;
@@ -88,13 +88,13 @@ export function isObject(value: unknown): value is Record<string, unknown> {
 }
 
 /**
- * 判断一个值是否为 null 或 undefined（即“nullish”）。
+ * 判断一个值是否为 `undefined` 或 `null`（即“nullish”）。
  *
  * @param value - 要判断的值
- * @returns 如果值是 null 或 undefined，则返回 true，否则返回 false
+ * @returns 如果值是 `undefined` 或 `null`，则返回 true，否则返回 false
  */
 export function isNullish(value: unknown): value is null | undefined {
-  return value === null || value === undefined;
+  return value === undefined || value === null;
 }
 
 /**
@@ -115,10 +115,7 @@ export function isFunction(value: unknown): value is Function {
  * @returns 如果值是 Date 对象则返回 true，否则返回 false
  */
 export function isDate(value: unknown): value is Date {
-  return (
-    value instanceof Date ||
-    Object.prototype.toString.call(value) === "[object Date]"
-  );
+  return value instanceof Date || Object.prototype.toString.call(value) === "[object Date]";
 }
 
 /**

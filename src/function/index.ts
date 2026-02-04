@@ -38,9 +38,7 @@ export function always<T>(value: T): () => T {
  *          - 成功时：[null, data]
  *          - 失败时：[error, undefined]
  */
-export async function to<T, E = Error>(
-  promise: Promise<T>,
-): Promise<[E, undefined] | [null, T]> {
+export async function to<T, E = Error>(promise: Promise<T>): Promise<[E, undefined] | [null, T]> {
   return promise
     .then<[null, T]>((data) => [null, data])
     .catch<[E, undefined]>((error: E) => [error, undefined]);
@@ -57,10 +55,7 @@ export async function to<T, E = Error>(
  * @param args - 如果 value 是函数，传递给它的参数
  * @returns 如果 value 是函数，则返回函数执行结果，否则直接返回 value
  */
-export function runIf<T, A extends unknown[]>(
-  value: ValueOrFunction<T, A>,
-  ...args: A
-): T {
+export function runIf<T, A extends unknown[]>(value: ValueOrFunction<T, A>, ...args: A): T {
   if (isFunction(value)) {
     return value(...args);
   }

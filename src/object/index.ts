@@ -123,8 +123,7 @@ export function get<T = unknown>(
       return defaultValue as T;
     }
 
-    const key =
-      rawKey[0] === "'" || rawKey[0] === '"' ? rawKey.slice(1, -1) : rawKey;
+    const key = rawKey[0] === "'" || rawKey[0] === '"' ? rawKey.slice(1, -1) : rawKey;
 
     current = current[key];
   }
