@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.2.2
+
+### Patch Changes
+
+- feat: add random string generator utility ([`285cf80`](https://github.com/huijiewei/resolid-utils/commit/285cf80655b9120ee38cddc50b2718c9e71658e9))
+
 ## 1.2.1
 
 ### Patch Changes
