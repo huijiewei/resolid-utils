@@ -1,3 +1,5 @@
+import { customAlphabet } from "nanoid";
+
 /**
  * 将字符串的首字母转换为大写，其余保持不变。
  *
@@ -130,4 +132,20 @@ export function trimEnd(text: string, suffix: string, ignoreCase = true): string
   }
 
   return text;
+}
+
+/**
+ * 生成指定长度的随机字符串
+ * 使用数字、大小写字母作为字符集
+ *
+ * @param size - 生成字符串的长度，默认为 16
+ * @returns 随机生成的字符串
+ */
+export function random(size = 16): string {
+  const nanoid = customAlphabet(
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+    size,
+  );
+
+  return nanoid();
 }

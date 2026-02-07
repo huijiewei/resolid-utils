@@ -5,6 +5,7 @@ import {
   endsWith,
   kebabCase,
   pascalCase,
+  random,
   snakeCase,
   startsWith,
   trimEnd,
@@ -290,6 +291,18 @@ describe("String Utilities", () => {
     it("should respect case when ignoreCase is false", () => {
       expect(trimEnd("HelloWorld", "world", false)).toBe("HelloWorld");
       expect(trimEnd("HelloWorld", "World", false)).toBe("Hello");
+    });
+  });
+
+  describe("random", () => {
+    it("should generate a string with default length of 16", () => {
+      const result = random();
+      expect(result).toHaveLength(16);
+    });
+
+    it("should generate a string with custom length", () => {
+      const result = random(8);
+      expect(result).toHaveLength(8);
     });
   });
 });
