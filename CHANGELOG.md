@@ -1,5 +1,13 @@
 # @resolid/utils
 
+## 1.2.3
+
+### Patch Changes
+
+- feat: add date functions ([`dde4e94`](https://github.com/huijiewei/resolid-utils/commit/dde4e9434b3afb97fe986e95d2c9e4773efd5a87))
+
+- feat: add array chunk function ([`34c4b0e`](https://github.com/huijiewei/resolid-utils/commit/34c4b0e50a32b1f1f487683d3fd4a46e6e52fff0))
+
 ## 1.2.2
 
 ### Patch Changes
