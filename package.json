@@ -35,6 +35,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@internationalized/date": "^3.11.0",
     "nanoid": "^5.1.6"
   },
   "devDependencies": {
@@ -43,10 +44,10 @@
     "@commitlint/config-conventional": "^20.4.1",
     "@resolid/config": "^4.0.1",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
-    "@types/node": "^24.10.11",
+    "@types/node": "^24.10.13",
     "@vitest/coverage-v8": "^4.0.18",
     "eslint": "^9.39.2",
-    "lefthook": "^2.1.0",
+    "lefthook": "^2.1.1",
     "prettier": "^3.8.1",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
@@ -60,7 +61,7 @@
       "optional": true
     }
   },
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "pnpm@10.29.3",
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || >=24"
   },
