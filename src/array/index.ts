@@ -1,5 +1,5 @@
 /**
- * 将任意值转换为数组形式。
+ * 将任意值转换为数组形式
  *
  * - 如果传入的值本身就是数组，则原样返回。
  * - 如果传入的是单个值，则包装成单元素数组返回。
@@ -9,6 +9,24 @@
  */
 export function asArray<T>(input: T | T[]): T[] {
   return Array.isArray(input) ? input : [input];
+}
+
+/**
+ * 将数组按指定大小分块
+ *
+ * @template T 数组元素类型
+ * @param arr 要分块的数组
+ * @param size 每块的最大长度
+ * @returns 分块后的二维数组
+ */
+export function chunk<T>(arr: readonly T[], size: number): T[][] {
+  const result: T[][] = [];
+
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+
+  return result;
 }
 
 /**
@@ -25,7 +43,7 @@ export function insert<T>(input: T[], index: number, item: T): T[] {
 }
 
 /**
- * 从数组中移除指定的元素。
+ * 从数组中移除指定的元素
  *
  * @template T - 数组元素的类型
  * @param {T[]} input - 要操作的数组

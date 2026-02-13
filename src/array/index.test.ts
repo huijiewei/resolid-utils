@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { asArray, insert, partition, remove } from "./index";
+import { asArray, chunk, insert, partition, remove } from "./index";
 
 describe("asArray", () => {
   it("should wrap a single value into an array", () => {
@@ -10,6 +10,31 @@ describe("asArray", () => {
   it("should return the original array if input is already an array", () => {
     const arr = [1, 2, 3];
     expect(asArray(arr)).toBe(arr);
+  });
+});
+
+describe("chunk", () => {
+  it("splits an array into chunks of the given size", () => {
+    const arr = [1, 2, 3, 4, 5];
+    const result = chunk(arr, 2);
+    expect(result).toEqual([[1, 2], [3, 4], [5]]);
+  });
+
+  it("returns the original array as a single chunk if size >= length", () => {
+    const arr = [1, 2, 3];
+    const result = chunk(arr, 5);
+    expect(result).toEqual([[1, 2, 3]]);
+  });
+
+  it("returns an empty array when the input array is empty", () => {
+    const result: number[][] = chunk([], 3);
+    expect(result).toEqual([]);
+  });
+
+  it("does not modify the original array", () => {
+    const arr = [1, 2, 3];
+    chunk(arr, 2);
+    expect(arr).toEqual([1, 2, 3]);
   });
 });
 
