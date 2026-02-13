@@ -41,21 +41,25 @@ export function getDatesBetween(start: DateValue, end: DateValue): DateValue[] {
 /**
  * 获取指定日期所在周的日期数组
  *
- * @param weeks 偏移周数（0 = 当前周, 1 = 下周, -1 = 上周）
+ * @param week 偏移周数（0 = 当前周, 1 = 下周, -1 = 上周）
  * @param date 指定日期
  * @param locale locale 字符串，例如 "en-US" 或 "zh-CN"
  * @param weekStartsOn 周起始日
  * @returns 所在周的日期数组
  */
 export function getDatesInWeek(
-  weeks: number,
+  week: number,
   date: DateValue,
   locale: string,
   weekStartsOn?: WeekStartsOn,
 ): DateValue[] {
   const dates: DateValue[] = [];
 
-  let weekDate = startOfWeek(date.add({ weeks }), locale, normalizeWeekStartsOn(weekStartsOn));
+  let weekDate = startOfWeek(
+    date.add({ weeks: week }),
+    locale,
+    normalizeWeekStartsOn(weekStartsOn),
+  );
 
   while (dates.length < 7) {
     dates.push(weekDate);
