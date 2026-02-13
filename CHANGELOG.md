@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.2.4
+
+### Patch Changes
+
+- fix: export date functions ([`281760f`](https://github.com/huijiewei/resolid-utils/commit/281760f6808187a67daee6ffb79ba513e0a84c17))
+
 ## 1.2.3
 
 ### Patch Changes
