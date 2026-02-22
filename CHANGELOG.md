@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.2.5
+
+### Patch Changes
+
+- feat: enhance date utilities with new functions and improve existing ones ([`b3d37d7`](https://github.com/huijiewei/resolid-utils/commit/b3d37d7d1d734919fc02b67df4f44d88ab0af6ca))
+
 ## 1.2.4
 
 ### Patch Changes
