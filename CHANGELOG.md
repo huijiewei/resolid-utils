@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.2.7
+
+### Patch Changes
+
+- chore: merge eslint and prettier to oxlint and oxfmt ([`1c569b1`](https://github.com/huijiewei/resolid-utils/commit/1c569b16b1afe0fc94c5a5c39f0b40948d14b320))
+
 ## 1.2.6
 
 ### Patch Changes
