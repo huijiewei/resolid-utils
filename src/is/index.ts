@@ -119,6 +119,16 @@ export function isDate(value: unknown): value is Date {
 }
 
 /**
+ * 判断一个值是否为 BigInt 对象。
+ *
+ * @param value - 要判断的值
+ * @returns 如果值是 BigInt 对象则返回 true，否则返回 false
+ */
+export function isBigInt(value: unknown): value is bigint {
+  return typeof value === "bigint";
+}
+
+/**
  * 判断一个值是否“为空”。
  *
  * 规则：

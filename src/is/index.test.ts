@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  isBigInt,
   isBoolean,
   isDate,
   isDefined,
@@ -143,6 +144,48 @@ describe("Type Checking Utilities", () => {
     it("should return false for non-Date values", () => {
       expect(isDate("2023-01-01")).toBe(false);
       expect(isDate({})).toBe(false);
+    });
+  });
+
+  describe("isBigInt", () => {
+    it("returns true for bigint literals", () => {
+      expect(isBigInt(0n)).toBe(true);
+      expect(isBigInt(123n)).toBe(true);
+      expect(isBigInt(BigInt(999))).toBe(true);
+    });
+
+    it("returns false for numbers", () => {
+      expect(isBigInt(0)).toBe(false);
+      expect(isBigInt(123)).toBe(false);
+      expect(isBigInt(NaN)).toBe(false);
+      expect(isBigInt(Infinity)).toBe(false);
+    });
+
+    it("returns false for other primitive types", () => {
+      expect(isBigInt("123")).toBe(false);
+      expect(isBigInt(true)).toBe(false);
+      expect(isBigInt(false)).toBe(false);
+      expect(isBigInt(null)).toBe(false);
+      expect(isBigInt(undefined)).toBe(false);
+      expect(isBigInt(Symbol("1"))).toBe(false);
+    });
+
+    it("returns false for objects", () => {
+      expect(isBigInt({})).toBe(false);
+      expect(isBigInt([])).toBe(false);
+      expect(isBigInt(new Date())).toBe(false);
+      expect(isBigInt(Object(1n))).toBe(false); // boxed BigInt object
+    });
+
+    it("acts as a proper type guard", () => {
+      const value: unknown = 42n;
+
+      if (isBigInt(value)) {
+        const result: bigint = value + 1n;
+        expect(result).toBe(43n);
+      } else {
+        throw new Error("Expected value to be bigint");
+      }
     });
   });
 
