@@ -1,12 +1,25 @@
 /**
- * 将一个数值限制在指定范围内。
+ * 将一个数值限制在指定范围内（支持 number 与 bigint）。
  *
- * @param value - 要限制的数值
- * @param range - 一个二元组 [min, max]，表示允许的最小值和最大值
+ * @param value 要限制的数值
+ * @param min 最小值（可选）
+ * @param max 最大值（可选）
  * @returns 如果 value 小于 min，则返回 min；如果大于 max，则返回 max；否则返回 value 本身
  */
-export function clamp(value: number, [min, max]: [number, number]): number {
-  return Math.min(max, Math.max(min, value));
+export function clamp<T extends number | bigint>(value: T, min?: T | null, max?: T | null): T {
+  if (max != null && min != null && min > max) {
+    throw new Error("invalid clamp range");
+  }
+
+  if (max != null && value > max) {
+    return max;
+  }
+
+  if (min != null && value < min) {
+    return min;
+  }
+
+  return value;
 }
 
 /**

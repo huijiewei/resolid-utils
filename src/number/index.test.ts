@@ -2,26 +2,39 @@ import { describe, expect, it } from "vitest";
 import { clamp, range } from "./index";
 
 describe("clamp", () => {
-  it("should return the value itself if it is within the range", () => {
-    expect(clamp(5, [0, 10])).toBe(5);
-    expect(clamp(0, [0, 10])).toBe(0);
-    expect(clamp(10, [0, 10])).toBe(10);
+  it("returns value when within range", () => {
+    expect(clamp(5, 0, 10)).toBe(5);
+    expect(clamp(5n, 0n, 10n)).toBe(5n);
   });
 
-  it("should return min if value is less than min", () => {
-    expect(clamp(-5, [0, 10])).toBe(0);
-    expect(clamp(-1, [0, 10])).toBe(0);
+  it("clamps to max when value exceeds max", () => {
+    expect(clamp(15, 0, 10)).toBe(10);
+    expect(clamp(15n, 0n, 10n)).toBe(10n);
   });
 
-  it("should return max if value is greater than max", () => {
-    expect(clamp(15, [0, 10])).toBe(10);
-    expect(clamp(100, [0, 10])).toBe(10);
+  it("clamps to min when value is below min", () => {
+    expect(clamp(-5, 0, 10)).toBe(0);
+    expect(clamp(-5n, 0n, 10n)).toBe(0n);
   });
 
-  it("should handle min equal to max", () => {
-    expect(clamp(5, [5, 5])).toBe(5);
-    expect(clamp(0, [5, 5])).toBe(5);
-    expect(clamp(10, [5, 5])).toBe(5);
+  it("works with only max defined", () => {
+    expect(clamp(15, null, 10)).toBe(10);
+    expect(clamp(15n, null, 10n)).toBe(10n);
+  });
+
+  it("works with only min defined", () => {
+    expect(clamp(-5, 0, null)).toBe(0);
+    expect(clamp(-5n, 0n, null)).toBe(0n);
+  });
+
+  it("returns value when no bounds are provided", () => {
+    expect(clamp(5, null, null)).toBe(5);
+    expect(clamp(5n, null, null)).toBe(5n);
+  });
+
+  it("throws when min > max", () => {
+    expect(() => clamp(5, 10, 0)).toThrow("invalid clamp range");
+    expect(() => clamp(5n, 10n, 0n)).toThrow("invalid clamp range");
   });
 });
 
