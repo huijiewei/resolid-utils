@@ -36,7 +36,7 @@ export function omitBy<T extends object>(
 ): Partial<T> {
   const result: Partial<T> = {};
 
-  for (const key of Object.keys(object) as Array<keyof T>) {
+  for (const key of Object.keys(object) as (keyof T)[]) {
     const value = object[key];
 
     if (!should(value, key)) {
@@ -87,7 +87,7 @@ export function pickBy<T extends object>(
 ): Partial<T> {
   const result: Partial<T> = {};
 
-  for (const key of Object.keys(object) as Array<keyof T>) {
+  for (const key of Object.keys(object) as (keyof T)[]) {
     const value = object[key];
 
     if (should(value, key)) {

@@ -31,7 +31,7 @@ export function throttle<T extends unknown[]>(
   let timer: ReturnType<typeof setTimeout>;
   let cancelled = false;
 
-  const fn = function (this: unknown, ...args: T) {
+  function fn(this: unknown, ...args: T) {
     if (cancelled) {
       return;
     }
@@ -57,12 +57,14 @@ export function throttle<T extends unknown[]>(
         () => {
           last = Date.now();
           callback.apply(this, args);
-          if (once) fn.cancel();
+          if (once) {
+            fn.cancel();
+          }
         },
         !middle ? wait : wait - delta,
       );
     }
-  };
+  }
 
   fn.cancel = () => {
     clearTimeout(timer);

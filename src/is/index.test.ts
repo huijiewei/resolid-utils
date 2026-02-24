@@ -126,7 +126,7 @@ describe("Type Checking Utilities", () => {
   describe("isFunction", () => {
     it("should return true for functions", () => {
       expect(isFunction(() => {})).toBe(true);
-      expect(isFunction(function () {})).toBe(true);
+      expect(isFunction(function fn() {})).toBe(true);
     });
 
     it("should return false for non-functions", () => {

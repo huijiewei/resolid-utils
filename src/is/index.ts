@@ -1,4 +1,4 @@
-// eslint-disable-next-line n/prefer-global/process
+// oxlint-disable-next-line node/no-process-env
 export const __DEV__: boolean = process.env.NODE_ENV !== "production";
 
 export const isBrowser: boolean = typeof window !== "undefined";

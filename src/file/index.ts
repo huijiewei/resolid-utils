@@ -56,7 +56,7 @@ export function matchesAccept(fileName: string, mimeType: string, accept: string
     }
 
     if (type.endsWith("/*")) {
-      const baseType = type.split("/")[0];
+      const [baseType] = type.split("/");
 
       return mimeType.startsWith(`${baseType}/`);
     }

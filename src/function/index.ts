@@ -1,5 +1,5 @@
-import { isFunction } from "../is";
 import type { ValueOrFunction } from "../types";
+import { isFunction } from "../is";
 
 /**
  * 空函数（no operation）。
@@ -77,7 +77,7 @@ export function callAll<
   T extends (...args: any[]) => void,
 >(...fns: (T | null | undefined)[]) {
   return (...args: Parameters<T>): void => {
-    fns.forEach(function (fn) {
+    fns.forEach((fn) => {
       fn?.(...args);
     });
   };
