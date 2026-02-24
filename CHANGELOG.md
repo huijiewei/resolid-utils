@@ -1,5 +1,15 @@
 # @resolid/utils
 
+## 1.2.6
+
+### Patch Changes
+
+- feat: add isBigInt function ([`ee6476a`](https://github.com/huijiewei/resolid-utils/commit/ee6476a9ea3571d0dde3709ec4a8acba0768f8f8))
+
+- feat: rewrite date utils ([`59db92c`](https://github.com/huijiewei/resolid-utils/commit/59db92cb61846912b91587c726ae753f18d921b2))
+
+- refactor: rewrite clamp function ([`d19dbcf`](https://github.com/huijiewei/resolid-utils/commit/d19dbcf955d81c8b6834f4f3c32f05300ad96069))
+
 ## 1.2.5
 
 ### Patch Changes
