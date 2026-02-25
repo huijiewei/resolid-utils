@@ -46,7 +46,7 @@
     "@changesets/cli": "^2.29.8",
     "@commitlint/cli": "^20.4.2",
     "@commitlint/config-conventional": "^20.4.2",
-    "@resolid/config": "^5.0.1",
+    "@resolid/config": "^5.0.2",
     "@svitejs/changesets-changelog-github-compact": "^1.2.0",
     "@types/node": "^24.10.13",
     "@vitest/coverage-v8": "^4.0.18",
