@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.2.8
+
+### Patch Changes
+
+- refactor: make DateRange start and end required ([`c47a2fc`](https://github.com/huijiewei/resolid-utils/commit/c47a2fc7a7b1bd267b4a3f33a6c82c9e6fbf736b))
+
 ## 1.2.7
 
 ### Patch Changes
