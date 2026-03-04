@@ -29,8 +29,8 @@ export function clampDate(
 }
 
 export type DateRange = {
-  start?: DateInput | null;
-  end?: DateInput | null;
+  start: DateInput | null;
+  end: DateInput | null;
 };
 
 /**

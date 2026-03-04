@@ -71,15 +71,15 @@ describe("isDateInRange", () => {
   };
 
   it("returns false when range.start is missing", () => {
-    expect(isDateInRange(d("2024-06-15"), { end: range.end })).toBe(false);
+    expect(isDateInRange(d("2024-06-15"), { start: null, end: range.end })).toBe(false);
   });
 
   it("returns false when range.end is missing", () => {
-    expect(isDateInRange(d("2024-06-15"), { start: range.start })).toBe(false);
+    expect(isDateInRange(d("2024-06-15"), { start: range.start, end: null })).toBe(false);
   });
 
   it("returns false when both range bounds are missing", () => {
-    expect(isDateInRange(d("2024-06-15"), {})).toBe(false);
+    expect(isDateInRange(d("2024-06-15"), { start: null, end: null })).toBe(false);
   });
 
   it("returns true when date is within range", () => {
