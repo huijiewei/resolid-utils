@@ -25,8 +25,8 @@ importers:
         specifier: ^20.4.3
         version: 20.4.3
       '@resolid/config':
-        specifier: ^5.0.3
-        version: 5.0.3(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.2(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.51.0)(typescript@5.9.3)
+        specifier: ^5.1.0
+        version: 5.1.0(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.2(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.51.0)(typescript@5.9.3)
       '@svitejs/changesets-changelog-github-compact':
         specifier: ^1.2.0
         version: 1.2.0
@@ -799,8 +799,8 @@ packages:
   '@quansync/fs@1.0.0':
     resolution: {integrity: sha512-4TJ3DFtlf1L5LDMaM6CanJ/0lckGNtJcMjQ1NAV6zDmA0tEHKZtxNKin8EgPaVX1YzljbxckyT2tJrpQKAtngQ==}
 
-  '@resolid/config@5.0.3':
-    resolution: {integrity: sha512-3A3w19tLI66sPWXad2EyIrMcXCfR2nTPXPhI4VfJ5QJaHkdh/D9mV1fRIiSb8pKms2Qc7fNAsAiPejESBvtRWg==}
+  '@resolid/config@5.1.0':
+    resolution: {integrity: sha512-TlojHfpxqFy8P/venWgCn1GNhRBLnZavMeyElNUqwD/F4/cDcuDpC6E+WJTPKbkmVN4CWHLQLOqbjGSqZ3NGJg==}
     engines: {node: ^22.13.0 || >=24}
     peerDependencies:
       eslint-plugin-react-hooks: ^7.0.1
@@ -3040,7 +3040,7 @@ snapshots:
     dependencies:
       quansync: 1.0.0
 
-  '@resolid/config@5.0.3(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.2(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.51.0)(typescript@5.9.3)':
+  '@resolid/config@5.1.0(eslint-plugin-react-hooks@7.0.1(eslint@9.39.3(jiti@2.6.1)))(eslint-plugin-react-you-might-not-need-an-effect@0.9.2(eslint@9.39.3(jiti@2.6.1)))(oxlint@1.51.0)(typescript@5.9.3)':
     dependencies:
       eslint-plugin-react-hooks: 7.0.1(eslint@9.39.3(jiti@2.6.1))
       eslint-plugin-react-you-might-not-need-an-effect: 0.9.2(eslint@9.39.3(jiti@2.6.1))
