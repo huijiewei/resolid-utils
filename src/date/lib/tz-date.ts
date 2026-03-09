@@ -6,8 +6,6 @@ import { toDate } from "./to-date";
 /**
  * 返回指定时区下的本地时间 Date 对象。
  *
- * 注意：JS Date 内部仍然以 UTC 存储，此函数只是应用时区偏移，方便格式化或计算。
- *
  * @param input - 要转换的日期，`null` 时默认当前
  * @param timezone - 时区标识，例如 "Europe/Amsterdam"
  *

@@ -86,12 +86,6 @@ export function formatDate(
 
   const { locale = deviceLocale(), timezone, genitive = false } = options;
 
-  const resolvedTimezone = timezone ?? deviceTimezone();
-  const resolvedDate =
-    resolvedTimezone?.toUpperCase() !== "UTC"
-      ? removeOffset(date, computeOffset(date, resolvedTimezone, "UTC"))
-      : date;
-
   if (isFormatStyle(format)) {
     const formatOptions = buildFormatOptions(format, timezone);
 
@@ -106,6 +100,13 @@ export function formatDate(
       .join("");
   }
 
+  const resolvedTimezone = timezone ?? deviceTimezone();
+
+  const resolvedDate =
+    resolvedTimezone?.toUpperCase() !== "UTC"
+      ? removeOffset(date, computeOffset(date, resolvedTimezone, "UTC"))
+      : date;
+
   const tokens = tokenizeFormat(format);
 
   const parts: string[] = [];
@@ -118,10 +119,10 @@ export function formatDate(
 
     switch (token.value) {
       case "YYYY":
-        parts.push(String(resolvedDate.getFullYear()));
+        parts.push(String(resolvedDate.getUTCFullYear()));
         break;
       case "YY":
-        parts.push(two(resolvedDate.getFullYear() % 100));
+        parts.push(two(resolvedDate.getUTCFullYear() % 100));
         break;
       case "MMMM":
         parts.push(formatPart(resolvedDate, "long", "month", locale, genitive));
@@ -130,16 +131,16 @@ export function formatDate(
         parts.push(formatPart(resolvedDate, "short", "month", locale, genitive));
         break;
       case "MM":
-        parts.push(two(resolvedDate.getMonth() + 1));
+        parts.push(two(resolvedDate.getUTCMonth() + 1));
         break;
       case "M":
-        parts.push(String(resolvedDate.getMonth() + 1));
+        parts.push(String(resolvedDate.getUTCMonth() + 1));
         break;
       case "DD":
-        parts.push(two(resolvedDate.getDate()));
+        parts.push(two(resolvedDate.getUTCDate()));
         break;
       case "D":
-        parts.push(String(resolvedDate.getDate()));
+        parts.push(String(resolvedDate.getUTCDate()));
         break;
       case "dddd":
         parts.push(formatPart(resolvedDate, "long", "weekday", locale, genitive));
@@ -151,47 +152,48 @@ export function formatDate(
         parts.push(formatPart(resolvedDate, "narrow", "weekday", locale, genitive));
         break;
       case "HH":
-        parts.push(two(resolvedDate.getHours()));
+        parts.push(two(resolvedDate.getUTCHours()));
         break;
       case "H":
-        parts.push(String(resolvedDate.getHours()));
+        parts.push(String(resolvedDate.getUTCHours()));
         break;
       case "hh":
-        parts.push(two(resolvedDate.getHours() % 12 || 12));
+        parts.push(two(resolvedDate.getUTCHours() % 12 || 12));
         break;
       case "h":
-        parts.push(String(resolvedDate.getHours() % 12 || 12));
+        parts.push(String(resolvedDate.getUTCHours() % 12 || 12));
         break;
       case "mm":
-        parts.push(two(resolvedDate.getMinutes()));
+        parts.push(two(resolvedDate.getUTCMinutes()));
         break;
       case "m":
-        parts.push(String(resolvedDate.getMinutes()));
+        parts.push(String(resolvedDate.getUTCMinutes()));
         break;
       case "ss":
-        parts.push(two(resolvedDate.getSeconds()));
+        parts.push(two(resolvedDate.getUTCSeconds()));
         break;
       case "s":
-        parts.push(String(resolvedDate.getSeconds()));
+        parts.push(String(resolvedDate.getUTCSeconds()));
         break;
       case "SSS":
-        parts.push(String(resolvedDate.getMilliseconds()).padStart(3, "0"));
+        parts.push(String(resolvedDate.getUTCMilliseconds()).padStart(3, "0"));
         break;
       case "A":
         parts.push(
-          formatDayPeriod(resolvedDate.getHours() < 12 ? "am" : "pm", locale).toUpperCase(),
+          formatDayPeriod(resolvedDate.getUTCHours() < 12 ? "am" : "pm", locale).toUpperCase(),
         );
         break;
       case "a":
         parts.push(
-          formatDayPeriod(resolvedDate.getHours() < 12 ? "am" : "pm", locale).toLowerCase(),
+          formatDayPeriod(resolvedDate.getUTCHours() < 12 ? "am" : "pm", locale).toLowerCase(),
         );
         break;
       case "Z":
       case "ZZ":
         parts.push(
-          (timezone ? computeOffset(date, "UTC", timezone, token.value) : undefined) ??
-            secondsToOffset(-1 * resolvedDate.getTimezoneOffset(), token.value),
+          timezone
+            ? computeOffset(date, "UTC", timezone, token.value)
+            : secondsToOffset(-1 * resolvedDate.getTimezoneOffset() * 60, token.value),
         );
         break;
     }
