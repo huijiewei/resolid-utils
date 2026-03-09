@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.3.1
+
+### Patch Changes
+
+- fix: prevent double offset in local timezone environments ([`5c21511`](https://github.com/huijiewei/resolid-utils/commit/5c21511e50eeae243b4af92a009bd2ae31e02f4c))
+
 ## 1.3.0
 
 ### Minor Changes
