@@ -1,5 +1,4 @@
 export * from "./array";
-export * from "./date";
 export * from "./file";
 export * from "./function";
 export * from "./is";
@@ -7,4 +6,5 @@ export * from "./number";
 export * from "./object";
 export * from "./string";
 export * from "./throttle";
+export * from "./device";
 export * from "./types";

@@ -1,7 +1,10 @@
 import { defineConfig, type UserConfig } from "tsdown";
 
 export default defineConfig({
-  entry: "src/index.ts",
+  entry: {
+    index: "src/index.ts",
+    date: "src/date/index.ts",
+  },
   format: "esm",
   target: "es2022",
   dts: true,
