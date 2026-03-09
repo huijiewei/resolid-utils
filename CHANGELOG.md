@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.3.0
+
+### Minor Changes
+
+- feat: add date utility functions ([`70f0f8e`](https://github.com/huijiewei/resolid-utils/commit/70f0f8e89494dc132aab56e6a97b9d0f28f9c38f))
+
 ## 1.2.8
 
 ### Patch Changes
