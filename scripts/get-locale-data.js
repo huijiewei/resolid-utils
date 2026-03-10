@@ -36,31 +36,34 @@ const locales = [
 
 const result = {};
 
-for (const locale of locales) {
-  console.log(`fetching ${locale}...`);
+await Promise.all(
+  locales.map(async (locale) => {
+    console.log(`fetching ${locale}...`);
 
-  const res = await fetch(`https://unpkg.com/cldr-dates-full/main/${locale}/ca-gregorian.json`);
-  const data = await res.json();
-  const cal = data.main[locale].dates.calendars.gregorian;
+    const res = await fetch(`https://unpkg.com/cldr-dates-full/main/${locale}/ca-gregorian.json`);
+    const data = await res.json();
+    const cal = data.main[locale].dates.calendars.gregorian;
 
-  result[locale] = {
-    month: {
-      long: {
-        standalone: Object.values(cal.months["stand-alone"].wide),
-        format: Object.values(cal.months.format.wide),
+    result[locale] = {
+      month: {
+        long: {
+          standalone: Object.values(cal.months["stand-alone"].wide),
+          format: Object.values(cal.months.format.wide),
+        },
+        short: {
+          standalone: Object.values(cal.months["stand-alone"].abbreviated),
+          format: Object.values(cal.months.format.abbreviated),
+        },
       },
-      short: {
-        standalone: Object.values(cal.months["stand-alone"].abbreviated),
-        format: Object.values(cal.months.format.abbreviated),
+      weekday: {
+        long: Object.values(cal.days["stand-alone"].wide),
+        short: Object.values(cal.days["stand-alone"].abbreviated),
+        narrow: Object.values(cal.days["stand-alone"].narrow),
       },
-    },
-    weekday: {
-      long: Object.values(cal.days["stand-alone"].wide),
-      short: Object.values(cal.days["stand-alone"].abbreviated),
-      narrow: Object.values(cal.days["stand-alone"].narrow),
-    },
-  };
-}
+    };
+  }),
+);
 
 writeFileSync("data/locale-data.json", JSON.stringify(result, null, 2));
+
 console.log("done");

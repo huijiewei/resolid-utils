@@ -30,7 +30,7 @@ export function formatDayPeriod(period: "am" | "pm", locale: string): string {
 
   /* istanbul ignore else -- @preserve */
   if (periodPart) {
-    dayPeriodCache.set(locale, { ...(cached || {}), [period]: periodPart.value });
+    dayPeriodCache.set(locale, { ...cached, [period]: periodPart.value });
 
     return periodPart.value;
   }

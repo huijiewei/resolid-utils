@@ -4,7 +4,9 @@ import { tokenValues } from "../lib/token-values";
 import { two } from "../lib/utils";
 
 function r<T>(length: number, fill: (index: number) => T): T[] {
-  return new Array(length).fill("").map((_x, i) => fill(i));
+  return Array.from({ length: length })
+    .fill("")
+    .map((_x, i) => fill(i));
 }
 
 const locales = [

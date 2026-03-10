@@ -216,7 +216,8 @@ describe("Type Checking Utilities", () => {
 
     it("should return false for non-Promise values", () => {
       expect(isPromise(42)).toBe(false);
-      expect(isPromise({ then: () => {} })).toBe(false); // 不考虑 thenable
+      // oxlint-disable-next-line unicorn/no-thenable
+      expect(isPromise({ then: () => {} })).toBe(false);
     });
   });
 });
