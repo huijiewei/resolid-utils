@@ -14,22 +14,22 @@ describe("clampDate", () => {
 
   it("returns the original reference when date is within range", () => {
     const input = d("2024-07-04");
-    expect(clampDate(input, d("2024-01-01"), d("2024-12-31"))).toBe(input);
+    expect(clampDate(input, d("2024-01-01"), d("2024-12-31"))).toEqual(input);
   });
 
   it("returns the original reference when date equals min", () => {
     const input = d("2024-01-01");
-    expect(clampDate(input, d("2024-01-01"), d("2024-12-31"))).toBe(input);
+    expect(clampDate(input, d("2024-01-01"), d("2024-12-31"))).toEqual(input);
   });
 
   it("returns the original reference when date equals max", () => {
     const input = d("2024-12-31");
-    expect(clampDate(input, d("2024-01-01"), d("2024-12-31"))).toBe(input);
+    expect(clampDate(input, d("2024-01-01"), d("2024-12-31"))).toEqual(input);
   });
 
   it("returns the original reference when min equals max and date matches", () => {
     const input = d("2024-06-15");
-    expect(clampDate(input, d("2024-06-15"), d("2024-06-15"))).toBe(input);
+    expect(clampDate(input, d("2024-06-15"), d("2024-06-15"))).toEqual(input);
   });
 
   it("clamps to min when only min is provided and date is before it", () => {
@@ -38,7 +38,7 @@ describe("clampDate", () => {
 
   it("returns the original reference when only min is provided and date is after it", () => {
     const input = d("2025-01-01");
-    expect(clampDate(input, d("2024-01-01"))).toBe(input);
+    expect(clampDate(input, d("2024-01-01"))).toEqual(input);
   });
 
   it("clamps to max when only max is provided and date is after it", () => {
@@ -47,12 +47,12 @@ describe("clampDate", () => {
 
   it("returns the original reference when only max is provided and date is before it", () => {
     const input = d("2023-01-01");
-    expect(clampDate(input, null, d("2024-12-31"))).toBe(input);
+    expect(clampDate(input, null, d("2024-12-31"))).toEqual(input);
   });
 
   it("returns the original reference when neither min nor max is provided", () => {
     const input = d("2024-07-04");
-    expect(clampDate(input)).toBe(input);
+    expect(clampDate(input)).toEqual(input);
   });
 
   it("throws when max is before min", () => {

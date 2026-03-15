@@ -69,7 +69,7 @@ export function remove<T>(input: T[], item: T): boolean {
  * @param predicate - 判断函数，返回 true 的元素会放入第一组，否则放入第二组
  * @returns [符合条件的数组, 不符合条件的数组]
  */
-export function partition<T>(input: T[], predicate: (element: T) => boolean): [Array<T>, Array<T>] {
+export function partition<T>(input: T[], predicate: (element: T) => boolean): [T[], T[]] {
   const left: T[] = [];
   const right: T[] = [];
 
