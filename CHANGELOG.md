@@ -1,5 +1,13 @@
 # @resolid/utils
 
+## 1.3.2
+
+### Patch Changes
+
+- refactor(date): narrow clampDate return type to Date ([`93cffeb`](https://github.com/huijiewei/resolid-utils/commit/93cffebd6677b6266f68523ebd5b14b24221bce0))
+
+- style: fix oxlint warnings ([`120162e`](https://github.com/huijiewei/resolid-utils/commit/120162e898d1e139f6b76c09931aa56e3a063718))
+
 ## 1.3.1
 
 ### Patch Changes
