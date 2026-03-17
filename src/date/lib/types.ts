@@ -13,3 +13,5 @@ export type DateRange = {
 export type WeekStartsOn = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export type WeekDayFormat = Intl.DateTimeFormatOptions["weekday"];
+
+export type FirstWeekContainsDate = 1 | 4;
