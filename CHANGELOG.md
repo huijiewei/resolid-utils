@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.3.4
+
+### Patch Changes
+
+- fix: export dayOfWeek and weekOfYear utils ([`d3ac464`](https://github.com/huijiewei/resolid-utils/commit/d3ac46450cec3d67075dc378df06a6708b5fe7cd))
+
 ## 1.3.3
 
 ### Patch Changes
