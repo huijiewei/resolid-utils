@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.3.3
+
+### Patch Changes
+
+- feat: add dayOfWeek and weekOfYear utils ([`e565341`](https://github.com/huijiewei/resolid-utils/commit/e5653410d811877add8e3612443d854fb119aa89))
+
 ## 1.3.2
 
 ### Patch Changes
