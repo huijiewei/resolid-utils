@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.3.5
+
+### Patch Changes
+
+- chore: move to resolid/utils ([`5387911`](https://github.com/resolid/utils/commit/53879119b31fc52899423432cd98e69968eb36a5))
+
 ## 1.3.4
 
 ### Patch Changes
