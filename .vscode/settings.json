@@ -1,8 +1,6 @@
 {
-  "github.copilot.chat.commitMessageGeneration.instructions": [
-    { "text": "Use conventional commit message format. Use english." }
-  ],
   "eslint.enable": false,
   "prettier.enable": false,
-  "editor.defaultFormatter": "oxc.oxc-vscode"
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true
 }
