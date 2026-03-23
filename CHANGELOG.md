@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.3.6
+
+### Patch Changes
+
+- refactor: rename firstWeekContainsDate to firstWeekContains ([`165f10c`](https://github.com/resolid/utils/commit/165f10c6f1c905a550e95cdd3a767ac5590c1a77))
+
 ## 1.3.5
 
 ### Patch Changes
