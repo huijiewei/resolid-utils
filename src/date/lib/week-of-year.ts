@@ -1,4 +1,4 @@
-import type { FirstWeekContainsDate, MaybeDateInput, WeekStartsOn } from "./types";
+import type { FirstWeekContains, MaybeDateInput, WeekStartsOn } from "./types";
 import { addDays } from "./add-days";
 import { dayOfWeek } from "./day-of-week";
 import { diffInDays } from "./diff-in-days";
@@ -10,20 +10,20 @@ import { toDate } from "./to-date";
  *
  * @param input - 日期输入，`null` 时默认当前
  * @param weekStartsOn - 一周的起始日，0 为周日，1 为周一，默认为 0
- * @param firstWeekContainsDate
+ * @param firstWeekContains - 第一周必须包含的日期，用于确定一年中的第一周
  *
  * @returns 当年的第几周
  */
 export function weekOfYear(
   input: MaybeDateInput,
   weekStartsOn: WeekStartsOn = 0,
-  firstWeekContainsDate: FirstWeekContainsDate = 4,
+  firstWeekContains: FirstWeekContains = 4,
 ): number {
   const date = toDate(input);
 
-  const decidingDay = addDays(date, 7 - firstWeekContainsDate - dayOfWeek(date, weekStartsOn));
+  const decidingDay = addDays(date, 7 - firstWeekContains - dayOfWeek(date, weekStartsOn));
   const firstWeekStart = startOfWeek(
-    new Date(decidingDay.getFullYear(), 0, firstWeekContainsDate),
+    new Date(decidingDay.getFullYear(), 0, firstWeekContains),
     weekStartsOn,
   );
 
