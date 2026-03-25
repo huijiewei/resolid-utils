@@ -1,5 +1,11 @@
 # @resolid/utils
 
+## 1.3.7
+
+### Patch Changes
+
+- style: fix oxlint warnings ([`bdb44b1`](https://github.com/resolid/utils/commit/bdb44b1b24421f115c736fda714d0de5483b7231))
+
 ## 1.3.6
 
 ### Patch Changes
