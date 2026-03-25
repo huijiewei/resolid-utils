@@ -15,9 +15,7 @@ const ISO_DATE_RE: RegExp =
  * @return Date 对象
  */
 export function toDate(input?: MaybeDateInput): Date {
-  if (!input) {
-    input = new Date();
-  }
+  input ??= new Date();
 
   if (input instanceof Date) {
     return new Date(input);

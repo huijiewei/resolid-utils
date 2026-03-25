@@ -16,11 +16,11 @@ import {
   two,
 } from "./utils";
 
-export interface FormatOptions {
+export type FormatOptions = {
   locale?: string;
   timezone?: string;
   genitive?: boolean;
-}
+};
 
 /**
  * 将日期格式化为指定格式的字符串。

@@ -1,15 +1,10 @@
 {
-  "extends": "@resolid/config/tsconfig/base.json",
+  "extends": "@resolid/config/tsconfig/lib.json",
   "include": [
     "src/**/*",
     "tsdown.config.ts",
     "vitest.config.ts",
     "oxfmt.config.ts",
     "oxlint.config.ts"
-  ],
-  "compilerOptions": {
-    "allowJs": false,
-    "declaration": true,
-    "isolatedDeclarations": true
-  }
+  ]
 }

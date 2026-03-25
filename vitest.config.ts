@@ -1,6 +1,6 @@
 import { defineConfig, type ViteUserConfig } from "vitest/config";
 
-export default defineConfig({
+const config: ViteUserConfig = defineConfig({
   test: {
     dir: "./src",
     coverage: {
@@ -10,4 +10,6 @@ export default defineConfig({
       TZ: "UTC",
     },
   },
-}) as ViteUserConfig;
+});
+
+export default config;

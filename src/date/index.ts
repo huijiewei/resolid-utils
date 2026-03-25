@@ -55,4 +55,4 @@ export * from "./lib/week-of-year";
 export * from "./lib/to-date";
 export * from "./lib/tz-date";
 export * from "./lib/token-values";
-export * from "./lib/types";
+export type * from "./lib/types";

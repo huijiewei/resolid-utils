@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import * as localeData from "../../../data/locale-data.json";
+import _localeData from "../../../data/locale-data.json" with { type: "json" };
 import { tokenValues } from "../lib/token-values";
 import { two } from "../lib/utils";
 
@@ -9,39 +9,12 @@ function r<T>(length: number, fill: (index: number) => T): T[] {
     .map((_x, i) => fill(i));
 }
 
-const locales = [
-  "ar",
-  "az",
-  "zh",
-  "hr",
-  "cs",
-  "da",
-  "nl",
-  "fi",
-  "fr",
-  "de",
-  "he",
-  "hu",
-  "id",
-  "it",
-  "kk",
-  "ko",
-  "nb",
-  "pl",
-  "ro",
-  "ru",
-  "sk",
-  "sl",
-  "sr",
-  "es",
-  "sv",
-  "tg",
-  "th",
-  "uk",
-  "uz",
-  "tr",
-  "vi",
-];
+const localeData = _localeData as Record<
+  string,
+  { month: { short: { standalone: string[] }; long: { format: string[] } } }
+>;
+
+const locales = Object.keys(localeData);
 
 describe("monthTokenValues", () => {
   it('generates "short" months in each locale that matches dates date dateStyle "short" months.', () => {
@@ -50,8 +23,7 @@ describe("monthTokenValues", () => {
     const renderedMonthRanges: string[][] = [];
 
     locales.forEach((locale) => {
-      // @ts-expect-error implicitly has an any type
-      renderedMonthRanges.push(localeData[locale]["month"]["short"]["standalone"]);
+      renderedMonthRanges.push(localeData[locale]!.month.short.standalone);
     });
 
     expect(monthRanges).toEqual(renderedMonthRanges);
@@ -63,8 +35,7 @@ describe("monthTokenValues", () => {
     const renderedMonthRanges: string[][] = [];
 
     locales.forEach((locale) => {
-      // @ts-expect-error implicitly has an any type
-      renderedMonthRanges.push(localeData[locale]["month"]["long"]["format"]);
+      renderedMonthRanges.push(localeData[locale]!.month.long.format);
     });
 
     expect(monthRanges).toEqual(renderedMonthRanges);
@@ -255,7 +226,7 @@ describe("tokenValues", () => {
   });
 
   it("can return the single digit day of the month range", () => {
-    expect(tokenValues("DD")).toEqual(r(31, (i) => `${two(i + 1)}`));
+    expect(tokenValues("DD")).toEqual(r(31, (i) => two(i + 1)));
   });
 
   it("can return the single digit day of the month range", () => {
@@ -267,7 +238,7 @@ describe("tokenValues", () => {
   });
 
   it("can return the double digit 24 hours of a day", () => {
-    expect(tokenValues("HH")).toEqual(r(24, (i) => `${two(i)}`));
+    expect(tokenValues("HH")).toEqual(r(24, (i) => two(i)));
   });
 
   it("can return the single digit 12 hours of a day", () => {
@@ -275,7 +246,7 @@ describe("tokenValues", () => {
   });
 
   it("can return the double digit 12 hours of a day", () => {
-    expect(tokenValues("hh")).toEqual(r(12, (i) => `${two(i + 1)}`));
+    expect(tokenValues("hh")).toEqual(r(12, (i) => two(i + 1)));
   });
 
   it("can return the double digit 59 minutes", () => {
@@ -283,7 +254,7 @@ describe("tokenValues", () => {
   });
 
   it("can return the single digit 59 minutes", () => {
-    expect(tokenValues("mm")).toEqual(r(60, (i) => `${two(i)}`));
+    expect(tokenValues("mm")).toEqual(r(60, (i) => two(i)));
   });
 
   it("can return the single digit 59 seconds", () => {
@@ -291,6 +262,6 @@ describe("tokenValues", () => {
   });
 
   it("can return the double digit 59 minutes", () => {
-    expect(tokenValues("ss")).toEqual(r(60, (i) => `${two(i)}`));
+    expect(tokenValues("ss")).toEqual(r(60, (i) => two(i)));
   });
 });

@@ -7,4 +7,4 @@ export * from "./object";
 export * from "./string";
 export * from "./throttle";
 export * from "./device";
-export * from "./types";
+export type * from "./types";

@@ -116,13 +116,13 @@ describe("parseDate", () => {
   });
 
   it("throws an error when the format does not include the time", () => {
-    expect(() => parseDate("December 31, 1999", { date: "long", time: "short" })).toThrowError(
+    expect(() => parseDate("December 31, 1999", { date: "long", time: "short" })).toThrow(
       `Date (December 31, 1999) does not match format (MMMM D, YYYY at h:mm A)`,
     );
   });
 
   it("throws an error when an incomplete iso time does not match a locale time", () => {
-    expect(() => parseDate("2021-12-31", { date: "long", time: "short" })).toThrowError(
+    expect(() => parseDate("2021-12-31", { date: "long", time: "short" })).toThrow(
       `Date (2021-12-31) does not match format (MMMM D, YYYY at h:mm A)`,
     );
   });

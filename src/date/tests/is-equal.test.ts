@@ -11,7 +11,7 @@ describe("isEqual", () => {
   });
 
   it("returns error if date is not valid", () => {
-    expect(() => isEqual("invalid", "2022-01-01")).toThrowError();
+    expect(() => isEqual("invalid", "2022-01-01")).toThrow();
   });
 
   it("returns true because the create dated is the current time", () => {

@@ -13,7 +13,7 @@ export function formatDayPeriod(period: "am" | "pm", locale: string): string {
 
   /* istanbul ignore if -- @preserve */
   if (cached?.[period]) {
-    return cached[period] as string;
+    return cached[period];
   }
 
   const specimen = new Date(specDate);

@@ -10,6 +10,6 @@ describe("diffInSeconds", () => {
   it("different should be 50 seconds compared to the current time", () => {
     const compare = addSeconds(null, 50);
 
-    expect(diffInSeconds(compare)).toBe(50);
+    expect(diffInSeconds(compare, null)).toBe(50);
   });
 });

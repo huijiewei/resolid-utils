@@ -35,7 +35,7 @@ const PASCAL_CASE_REGEX = /[A-Z]?[a-z]+|[A-Z]+(?![a-z])|[0-9]+/g;
  * @returns 帕斯卡命名格式的字符串
  */
 export function pascalCase(str: string): string {
-  return (str.match(PASCAL_CASE_REGEX) || [])
+  return (str.match(PASCAL_CASE_REGEX) ?? [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1).toLowerCase()}`)
     .join("");
 }
@@ -49,7 +49,7 @@ const KEBAB_CASE_REGEX = /[A-Z]+(?=[A-Z][a-z])|[A-Z]?[a-z]+|[A-Z]+|[0-9]+/g;
  * @returns 短横线格式的字符串
  */
 export function kebabCase(str: string): string {
-  return (str.match(KEBAB_CASE_REGEX) || []).join("-").toLowerCase();
+  return (str.match(KEBAB_CASE_REGEX) ?? []).join("-").toLowerCase();
 }
 
 /**
@@ -59,7 +59,7 @@ export function kebabCase(str: string): string {
  * @returns 蛇形命名格式的字符串
  */
 export function snakeCase(str: string): string {
-  return (str.match(KEBAB_CASE_REGEX) || []).join("_").toLowerCase();
+  return (str.match(KEBAB_CASE_REGEX) ?? []).join("_").toLowerCase();
 }
 
 /**

@@ -58,7 +58,7 @@ export function parseDate(
   let a: null | boolean = null;
 
   for (let i = 0; i < tokens.length; i++) {
-    const token = tokens[i];
+    const token = tokens[i]!;
 
     if (token.type === "literal") {
       pos += token.value.length;
@@ -86,7 +86,7 @@ export function parseDate(
         if (len < 0) {
           invalid(tokens.map((t) => t.value).join(""));
         }
-      } else if (next.type === "field" && (next.value === "A" || next.value === "a")) {
+      } else if (next.value === "A" || next.value === "a") {
         let j = 1;
         while (j <= 4 && input.charCodeAt(pos + j) >= 48 && input.charCodeAt(pos + j) <= 57) {
           j++;
@@ -110,7 +110,7 @@ export function parseDate(
       continue;
     }
 
-    if (token.type === "field" && raw === token.value) {
+    if (raw === token.value) {
       throw new Error(`Invalid input: "${raw}" looks like a format token, not a value`);
     }
 
@@ -168,7 +168,7 @@ export function parseDate(
     }
   }
 
-  let hours = values.hour || 0;
+  let hours = values.hour ?? 0;
 
   if (a === false) {
     hours += hours === 12 ? 0 : 12;

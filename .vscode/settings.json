@@ -2,5 +2,8 @@
   "eslint.enable": false,
   "prettier.enable": false,
   "editor.defaultFormatter": "oxc.oxc-vscode",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "oxc.typeAware": true,
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
 }

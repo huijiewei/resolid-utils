@@ -43,7 +43,7 @@ export function isUndefined(value: unknown): value is undefined {
  * @param value - 要判断的值
  * @returns 如果值既不是 `undefined` 也不是 `null`，则返回 true
  */
-export function isDefined<T>(value: T): value is NonNullable<T> {
+export function isDefined<T>(value: T | undefined | null): value is T {
   return value !== undefined && value !== null;
 }
 

@@ -450,7 +450,7 @@ export function buildFormatOptions(
   const options: Intl.DateTimeFormatOptions = { timeZone: timezone };
 
   if (isString(format)) {
-    options.dateStyle = format as FormatStyle;
+    options.dateStyle = format;
   } else {
     if ("date" in format) {
       options.dateStyle = format.date;
