@@ -1,10 +1,4 @@
 {
   "extends": "@resolid/config/tsconfig/lib.json",
-  "include": [
-    "src/**/*",
-    "tsdown.config.ts",
-    "vitest.config.ts",
-    "oxfmt.config.ts",
-    "oxlint.config.ts"
-  ]
+  "include": ["src/**/*", "*.config.ts"]
 }
